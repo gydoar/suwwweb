@@ -1,4 +1,5 @@
-<h1>Tema suWWWeb</h1>
-<p>Tema creado por suWWWEb para ser utilizado como platilla base de los demas desarrollos</p>
+Tema base suWWWeb
 
-<p>25-02-2015</p>
+Tema base Wordpress realizado por suWWWeb con el fin de utilizar en los desarrollo siguientes.
+
+25-02-2015
