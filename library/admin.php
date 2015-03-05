@@ -42,3 +42,26 @@ $buttons[] = 'visualaid'; //Ayudas visuales del editor
 return $buttons;
 }
 add_filter("mce_buttons_3", "todos_los_botones");
+
+
+////////
+// Autenticacion con Email o Nombre de Usuario
+////////
+function bainternet_allow_email_login( $user, $username, $password ) {
+    if ( is_email( $username ) ) {
+        $user = get_user_by_email( $username );
+        if ( $user ) $username = $user->user_login;
+    }
+    return wp_authenticate_username_password(null, $username, $password );
+}
+
+add_filter('authenticate', 'bainternet_allow_email_login', 20, 3);
+ 
+
+function addEmailToLogin( $translated_text, $text, $domain ) {
+    if ( "Nombre de usuario" == $translated_text )
+        $translated_text .= __( ' Or Email');
+    return $translated_text;
+}
+
+add_filter( 'gettext', 'addEmailToLogin', 20, 3 );
