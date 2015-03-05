@@ -1,7 +1,6 @@
 <?php 
 // Cargar archivos externos
 require_once( 'library/admin.php' );
-require_once( 'library/login.php' );
 
 /***
 // Llamar stylos y archivos Js
