@@ -96,7 +96,7 @@ if (!current_user_can('manage_options')) {
 	function more_remove_menu_page() {
             //remove_menu_page( 'index.php' );                  //Escritorio
 			//remove_menu_page( 'edit.php' );                   //Articulos
-			remove_menu_page( 'upload.php' );                 //Audio visual
+			//remove_menu_page( 'upload.php' );                 //Audio visual
 			//remove_menu_page( 'edit.php?post_type=page' );    //Paginas
 			remove_menu_page( 'edit-comments.php' );          //Comentarios
 			remove_menu_page( 'themes.php' );                 //Apariencia
@@ -106,6 +106,7 @@ if (!current_user_can('manage_options')) {
 			remove_menu_page( 'options-general.php' );        //Ajustes
 	}    
 }
+
 
 
 ////////
@@ -158,3 +159,73 @@ add_action( 'wp_dashboard_setup', 'my_dashboard_setup_function' );
 function my_dashboard_setup_function() {
     add_meta_box( 'my_dashboard_widget', 'Biembenido al escritorio de suWWWeb', 'custom_dashboard_widget', 'dashboard', 'normal', 'high' );
 }
+
+
+
+////////
+// Remplazar nombre en el menu
+////////
+add_filter( 'gettext', 'change_post_news' );
+add_filter( 'ngettext', 'change_post_news' );
+ 
+function change_post_news( $translated )
+{
+    $translated = str_replace( 'Entradas', 'Artículos', $translated );
+    $translated = str_replace( 'entradas', 'artículos', $translated );
+
+    $translated = str_replace( 'Medios', 'Multimedia', $translated );
+    $translated = str_replace( 'medios', 'multimedia', $translated );
+
+    $translated = str_replace( 'Widgets', 'Modulos', $translated );
+    $translated = str_replace( 'widgets', 'modulos', $translated );
+    return $translated;
+}
+
+
+////////
+// Ordenando el menu de administracion
+////////
+function custom_menu_order($menu_ord) {  
+if (!$menu_ord) return true;  
+
+return array(  
+    'index.php', // Escritorio
+    'separator1', // Primer separador
+    'edit.php?post_type=page', // Paginas
+    'edit.php', // Articulos
+    'upload.php', // Media
+    'separator2', // Segundo separador 
+    'nav-menus.php', // Menu  
+    'widgets.php', //Widgets
+    'users.php', // Usuarios  
+    'separator-last', // Ultimo separador 
+    'edit-comments.php', // Comentarios
+    'link-manager.php', // Links 
+    'themes.php', // Apariencia 
+    'plugins.php', // Plugins  
+    'tools.php', // Herramientas  
+    'options-general.php', // Ajustes      
+);
+}  
+add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_order  
+add_filter('menu_order', 'custom_menu_order');
+
+
+////////
+// Moviendo el menu
+////////
+function re_sort_menu() {
+  global $menu;
+  global $submenu;
+  // Note: find the position of every submenu in Appearance by uncommenting the following: 
+  // print_r($submenu['themes.php'];
+  unset($submenu['themes.php'][10]); // Unsets Appearance -> Menu (position 10)
+  unset($submenu['themes.php'][7]); // Unsets Appearance -> Widgets
+
+  // Add Menu and Widgets back at top level with some dashicons
+  // Be careful not to give menu positions (array keys) that conflict with other menu items
+  // TIP: print_r($menu); to see existing menu positions and also to check out the proper order of these array values. WP docu seems to list them in the incorrect order.
+  $menu[31] = array( __( 'Menus', 'theme-slug' ), 'edit_themes', 'nav-menus.php', __( 'Menus', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-menu');  
+  $menu[32] = array( __( 'Widgets', 'theme-slug' ), 'edit_themes', 'widgets.php', __( 'Widgets', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-admin-generic');  
+}
+add_action( 'admin_menu', 're_sort_menu' );
