@@ -9,7 +9,8 @@
 ////////
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/library/inc/' );
 require_once dirname( __FILE__ ) . '/inc/options-framework.php';
-
+$optionsfile = locate_template( 'options.php' );
+load_template( $optionsfile );
 
 ////////
 // Agregando Favicon al administrador
@@ -97,7 +98,7 @@ add_filter( 'login_headertitle', 'bones_login_title' );
 ////////
 // Eliminamos Elementos del menu si no es administrador
 ////////
-if (!current_user_can('manage_options')) {
+if (current_user_can('manage_options')) {
     
 	add_action( 'admin_init', 'more_remove_menu_page' );
  
@@ -109,7 +110,7 @@ if (!current_user_can('manage_options')) {
 			remove_menu_page( 'edit-comments.php' );          //Comentarios
 			remove_menu_page( 'themes.php' );                 //Apariencia
 			remove_menu_page( 'plugins.php' );                //Plugins
-			remove_menu_page( 'users.php' );                  //Usuarios
+			//remove_menu_page( 'users.php' );                  //Usuarios
 			remove_menu_page( 'tools.php' );                  //Herramientas
 			remove_menu_page( 'options-general.php' );        //Ajustes
 	}    
@@ -206,6 +207,8 @@ function change_post_news( $translated )
 
     $translated = str_replace( 'Widgets', 'Modulos', $translated );
     $translated = str_replace( 'widgets', 'modulos', $translated );
+
+
     return $translated;
 }
 
@@ -225,6 +228,7 @@ return array(
     'separator2', // Segundo separador 
     'nav-menus.php', // Menu  
     'widgets.php', //Widgets
+    'themes.php?page=options-framework', // Theme Options
     'users.php', // Usuarios  
     'separator-last', // Ultimo separador 
     'edit-comments.php', // Comentarios
@@ -246,14 +250,19 @@ function re_sort_menu() {
   global $menu;
   global $submenu;
   // Note: find the position of every submenu in Appearance by uncommenting the following: 
-  // print_r($submenu['themes.php'];
+  //print_r($submenu['themes.php']);
+  unset($submenu['themes.php'][0]); // Unsets Appearance -> Theme Options
   unset($submenu['themes.php'][10]); // Unsets Appearance -> Menu (position 10)
   unset($submenu['themes.php'][7]); // Unsets Appearance -> Widgets
+  
 
   // Add Menu and Widgets back at top level with some dashicons
   // Be careful not to give menu positions (array keys) that conflict with other menu items
   // TIP: print_r($menu); to see existing menu positions and also to check out the proper order of these array values. WP docu seems to list them in the incorrect order.
   $menu[31] = array( __( 'Menus', 'theme-slug' ), 'edit_themes', 'nav-menus.php', __( 'Menus', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-menu');  
-  $menu[32] = array( __( 'Widgets', 'theme-slug' ), 'edit_themes', 'widgets.php', __( 'Widgets', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-admin-generic');  
+
+  $menu[32] = array( __( 'Widgets', 'theme-slug' ), 'edit_themes', 'widgets.php', __( 'Widgets', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-admin-generic');
+
+  $menu[33] = array( __( 'Editar Inicio', 'theme-slug' ), 'edit_themes', 'themes.php?page=options-framework', __( 'Theme Options', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-admin-appearance');  
 }
 add_action( 'admin_menu', 're_sort_menu' );
