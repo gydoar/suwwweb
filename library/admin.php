@@ -3,11 +3,19 @@
 //// Agregando configuración a nuestro Backend
 ////////
 
+
+////////
+// Agregando Options Theme Framework
+////////
+define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/library/inc/' );
+require_once dirname( __FILE__ ) . '/inc/options-framework.php';
+
+
 ////////
 // Agregando Favicon al administrador
 ////////
  function admin_head_example() {
-    echo '<link rel="icon" type="image/png" href="' . get_bloginfo('template_directory') . 'library/img/admin-favicon.png" />';
+    echo '<link rel="icon" type="image/png" href="' . get_bloginfo('template_directory') . '/library/img/admin-favicon.png" />';
 }
 
 add_action( 'admin_head', 'admin_head_example' );
