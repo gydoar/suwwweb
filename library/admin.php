@@ -110,6 +110,26 @@ if (!current_user_can('manage_options')) {
 
 
 ////////
+// Eliminamos elementos del nuevo toolbar en WP 3.3
+////////
+function eliminar_nodos_admin_bar() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('wp-logo'); // Elimina el logo de WordPress (desaparece también todo el submenú)
+    $wp_admin_bar->remove_menu('about'); // Elimina el enlace "Sobre WordPress"
+    $wp_admin_bar->remove_menu('wporg'); // Elimina el enlace a wordpress.org
+    $wp_admin_bar->remove_menu('documentation'); // Elimina el enlace a la documentación oficial (Codex)
+    $wp_admin_bar->remove_menu('support-forums'); // Elimina el enlace a los foros de ayuda
+    $wp_admin_bar->remove_menu('feedback'); // Elimina el enlace "Sugerencias"
+    $wp_admin_bar->remove_menu('view-site'); // Elimina el submenú que aparece al pasar el cursor sobre el nombre de la web
+    $wp_admin_bar->remove_menu('comments'); // Elimina el acceso directo a los comentarios
+    $wp_admin_bar->remove_menu('updates'); // Elimina el icono de notificación de actualizaciones
+    $wp_admin_bar->remove_menu('new-content'); // Elimina el menú para generar nuevo contenido
+    //$wp_admin_bar->remove_menu('my-account'); // Elimina el acceso a la cuenta de usuario y al enlace para desconectarse
+    }
+add_action('wp_before_admin_bar_render', 'eliminar_nodos_admin_bar');
+
+
+////////
 // Forzar el escritorio a una sola columna
 ////////
 function so_screen_layout_columns( $columns ) {
