@@ -20,25 +20,11 @@ function wp_enqueue_scripts_example() {
 
 
 /***
-// Habilitar soporte para widget
-***/
-register_sidebar(array(
-	'id' => 'sidebar1',
-	'name' => __( 'Sidebar 1', 'bonestheme' ),
-	'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
-	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-	'after_widget' => '</div>',
-	'before_title' => '<h4 class="widgettitle">',
-	'after_title' => '</h4>',
-));
-
-
-/***
 // Habilitar soporte para menu
 ***/
 register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'bonestheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'bonestheme' ) // secondary nav in footer
+			'header-menu' => 'Menu superior',   // main nav in header
+			'footer-menu' => 'Menu pie' // secondary nav in footer
 		)
 	);
