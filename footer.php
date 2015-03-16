@@ -17,6 +17,29 @@
 <!--/ script -->
 
 <!-- Scripts Adiconales -->
+
+<!-- Menu responsive -->
+
+ <script>
+        $(function() {
+     
+        var btn_movil = $('#nav-mobile'),
+        menu = $('#menu').find('ul');
+     
+        // Al dar click agregar/quitar clases que permiten el despliegue del menú
+        btn_movil.on('click', function (e) {
+            e.preventDefault();
+     
+            var el = $(this);
+     
+            el.toggleClass('nav-active');
+            menu.toggleClass('open-menu');
+        });
+    });
+  </script>
+
+<!--/ Menu responsive -->
+
 <script src="<?php bloginfo('template_url' ); ?>/library/js/owl-carousel.js"></script>
 
 <script>

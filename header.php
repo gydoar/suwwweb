@@ -39,20 +39,17 @@
 	<?php wp_head(); ?>
 
 </head>
-<body class="container">
+<body>
 	
 	<header>
-
-		<div id="logo">
-			
-		</div>
-		
-		<div class="menu">
-			
-			<?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
-		
-		</div>
-				
-
-	</header>
+        <nav id="menu"><a class="nav-mobile" id="nav-mobile" href="#"></a>
+            <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Tutoriales</a></li>
+            <li><a href="#">Wordpress</a></li>
+            <li><a href="#">Recursos Web</a></li>
+            <li><a href="#">Demos</a></li>
+            </ul>
+        </nav>
+    </header>
 
