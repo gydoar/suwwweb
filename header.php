@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,7 @@
  		?>
  	</title>
  	<meta name="description" content="<?php bloginfo('description' ); ?>">
+
  	<link rel="apple-touch-icon" href="<?php bloginfo('template_url' ); ?>/library/img/apple-touch-icon.png">
  	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name') ?> - RSS" href="<?php bloginfo('rss2_url') ?>" />
     <link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name') ?> - Atom" href="<?php bloginfo('atom_url') ?>" />
@@ -50,14 +51,6 @@
 			
 			<?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
 		
-		</div>
-
-		<div id="owl-demo" class="owl-carousel owl-theme">
- 
-		  <div class="item"><img src="assets/fullimage1.jpg" alt="The Last of us"></div>
-		  <div class="item"><img src="assets/fullimage2.jpg" alt="GTA V"></div>
-		  <div class="item"><img src="assets/fullimage3.jpg" alt="Mirror Edge"></div>
-		 
 		</div>
 				
 

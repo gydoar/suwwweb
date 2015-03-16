@@ -1,4 +1,7 @@
 
+
+
+
 <footer>
 	<p>HECHO CON&nbsp;<img width="11" src="<?php bloginfo('template_url' ); ?>/library/img/corazon.png" alt="">&nbsp;POR <a target="_blank" href="http://suwwweb.com">SUWWWEB</a></p>
 </footer>
@@ -6,12 +9,16 @@
 
 
 
-
-
 <!-- script -->
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<?php bloginfo('template_url' ); ?>/library/js/modernizr-custom-min.js"></script>
+
+<!--/ script -->
+
+<!-- Scripts Adiconales -->
 <script src="<?php bloginfo('template_url' ); ?>/library/js/owl-carousel.js"></script>
+
 <script>
 	$(document).ready(function() {
  
@@ -33,7 +40,8 @@
 	 
 	});
 </script>
-<!--/ script -->
+
+<!--/ Scripts Adiconales -->
 
 <?php wp_footer(); ?>
 

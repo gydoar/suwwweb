@@ -99,9 +99,9 @@ function optionsframework_options() {
 	);
 
 	$options[] = array(
-		'name' => __( 'Input Text Mini', 'theme-textdomain' ),
+		'name' => __( 'Example', 'theme-textdomain' ),
 		'desc' => __( 'A mini text input field.', 'theme-textdomain' ),
-		'id' => 'example_text_mini',
+		'id' => 'example',
 		'std' => 'Default',
 		'class' => 'mini',
 		'type' => 'text'
