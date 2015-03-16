@@ -20,7 +20,23 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
+	<!-- css  indispensables -->
+	
+	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/library/css/normalize.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/library/css/skeleton.css">
+	<!--/ css indispensables -->
+
+	<!-- css adicionales -->
+
+	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/library/css/owl-carousel.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/library/css/owl-theme.css">
+	
+	<!--/ css adicionales -->
+
+	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/style.css">
+
 	<?php wp_head(); ?>
+
 </head>
 <body class="container">
 	
@@ -31,9 +47,19 @@
 		</div>
 		
 		<div class="menu">
+			
 			<?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
+		
 		</div>
-		
-		
+
+		<div id="owl-demo" class="owl-carousel owl-theme">
+ 
+		  <div class="item"><img src="assets/fullimage1.jpg" alt="The Last of us"></div>
+		  <div class="item"><img src="assets/fullimage2.jpg" alt="GTA V"></div>
+		  <div class="item"><img src="assets/fullimage3.jpg" alt="Mirror Edge"></div>
+		 
+		</div>
+				
 
 	</header>
+
