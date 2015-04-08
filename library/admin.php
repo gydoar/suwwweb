@@ -98,7 +98,7 @@ add_filter( 'login_headertitle', 'bones_login_title' );
 ////////
 // Eliminamos Elementos del menu si no es administrador
 ////////
-if (current_user_can('manage_options')) {
+if (!current_user_can('manage_options')) {
     
 	add_action( 'admin_init', 'more_remove_menu_page' );
  
