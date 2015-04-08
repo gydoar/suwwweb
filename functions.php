@@ -1,10 +1,12 @@
 <?php 
-// Cargar archivos externos
+/*------------------------------------*\
+    $CARGAR ARCHIVOS EXTERNOS
+\*------------------------------------*/
 require_once( 'library/admin.php' );
 
-/***
-// Habilitar soporte para menu
-***/
+/*------------------------------------*\
+    $HABILITAR SOPORTE PARA MENU
+\*------------------------------------*/
 register_nav_menus(
 		array(
 			'header-menu' => 'Menu superior',   // main nav in header

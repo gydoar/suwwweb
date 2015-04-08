@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<article id="single">
+	<article class="single">
 		
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
