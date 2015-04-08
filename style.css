@@ -15,30 +15,42 @@ Tags: wordpress, html5, css3, jquery, javascript, suwwweb
 \*------------------------------------*/
 /**
  * CONTENIDO...........Lo estás leyendo!!
- * RESET...............Establece los valores iniciales
+ * INCLUDE CSS...............Establece los valores iniciales
  * FONT-FACE...........Importamos fuentes de iconos y font-face
+ * STYLES..............
  * MEDIA-QUERIES.......
  */
 
+/*------------------------------------*\
+    $INCLUDE CSS
+\*------------------------------------*/
+@import url(library/css/normalize.css);
+@import url(library/css/skeleton.css);
+
+
+
+
 
 /*------------------------------------*\
-    $FONT-FACE
+    $STYLES
 \*------------------------------------*/
-
-
 header{}
 
 footer{}
 
-#copy{
+.copyright{
+    background: #32a7d1;
     font-size: 12px;
 	text-align: center;
 }
-#copy a{
+.copyright a{
     color: #000000;
 	text-decoration: none;
 	
 }
+
+
+
 
 
 /*------------------------------------*\

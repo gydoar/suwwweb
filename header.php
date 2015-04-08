@@ -23,17 +23,6 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
-	<!-- css  indispensables -->
-	
-	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/library/css/normalize.css">
-	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/library/css/skeleton.css">
-	<!--/ css indispensables -->
-
-	<!-- css adicionales -->
-
-	
-	<!--/ css adicionales -->
-
 	<link rel="stylesheet" href="<?php bloginfo('template_url' ); ?>/style.css">
 
 	<?php wp_head(); ?>
