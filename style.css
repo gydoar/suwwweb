@@ -10,6 +10,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: wordpress, html5, css3, jquery, javascript, suwwweb
 */
 
+/*------------------------------------*\
+    $CONTENIDO
+\*------------------------------------*/
+/**
+ * CONTENIDO...........Lo estás leyendo!!
+ * RESET...............Establece los valores iniciales
+ * FONT-FACE...........Importamos fuentes de iconos y font-face
+ * MEDIA-QUERIES.......
+ */
+
+
+/*------------------------------------*\
+    $FONT-FACE
+\*------------------------------------*/
+
+
 header{}
 
 footer{}
@@ -25,8 +41,9 @@ footer{}
 }
 
 
-/* #Media Queries
-================================================== */
+/*------------------------------------*\
+    $MEDIA-QUERIES
+\*------------------------------------*/
 
 	/* Smaller than standard 960 (devices and browsers) */
 	@media only screen and (max-width: 959px) {}

@@ -1,20 +1,41 @@
 <?php 
-////////
-//// Agregando configuración a nuestro Backend
-////////
+/*------------------------------------*\
+    CONFIGURACIÓN DE NUESTRO BACKEND
+\*------------------------------------*/
 
+/*------------------------------------*\
+    $CONTENIDO
+\*------------------------------------*/
+/**
+ * AGREGANDO OPTIONS THEME FRAMEWORK
+ * AGREGANDO FAVICON AL ADMINISTRADOR
+ * INFORMACIÓN DE CONTACTO FOOTER
+ * ACTIVAR BOTONES EN EDITOR DE TEXTO
+ * AUTENTICACIÓN CON EMAIL
+ * LOGO FORMULARIO AUTENTICACIÓN
+ * LIMITAR MENU SI NO ES ADMIN
+ * ELIMINAMOS ELEMENTOS DEL TOOLBAR DESDE WP 3.3
+ * FORZAR ESCRITORIO A UNA COLUMNA
+ * ELIMINAMOS METABOX DEL ESCRITORIO
+ * WIDGET PARA EL ESCRITORIO
+ * REMPLAZAR NOMBRES DEL MENU
+ * ORDENAR EL MENU DE ADMINISTRACIÓN
+ * MOVIENDO EL MENU
+ * 
+ */
 
-////////
-// Agregando Options Theme Framework
-////////
+/*------------------------------------*\
+    AGREGANDO OPTIONS THEME FRAMEWORK
+\*------------------------------------*/
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/library/inc/' );
 require_once dirname( __FILE__ ) . '/inc/options-framework.php';
 $optionsfile = locate_template( 'options.php' );
 load_template( $optionsfile );
 
-////////
-// Agregando Favicon al administrador
-////////
+
+/*------------------------------------*\
+    AGREGANDO FAVICON AL ADMINISTRADOR
+\*------------------------------------*/
  function admin_head_example() {
     echo '<link rel="icon" type="image/png" href="' . get_bloginfo('template_directory') . '/library/img/admin-favicon.png" />';
 }
@@ -22,9 +43,9 @@ load_template( $optionsfile );
 add_action( 'admin_head', 'admin_head_example' );
 
 
-////////
-// Información de contacto en nuestro footer
-////////
+/*------------------------------------*\
+    INFORMACIÓN DE CONTACTO FOOTER
+\*------------------------------------*/
 function bones_custom_admin_footer() {
 	_e( '<span id="footer-thankyou">Desarrollado por <a href="http://suwwweb.com" target="_blank">suWWWeb |</a></span> Contacto: <a href="mailto:soporte@suwwweb.com">soporte@suwwweb.com</a> | Tel: (+57) 1 3000 754 / 755 | Bogotá - Colombia', 'bonestheme' );
 }
@@ -32,9 +53,9 @@ function bones_custom_admin_footer() {
 add_filter( 'admin_footer_text', 'bones_custom_admin_footer' );
 
 
-////////
-// Activar todos los botones del editor de texto
-////////
+/*------------------------------------*\
+    ACTIVAR BOTONES EN EDITOR DE TEXTO
+\*------------------------------------*/
 function todos_los_botones($buttons) {
 
 $buttons[] = 'fontselect'; //Selector de tipo de fuente
@@ -53,9 +74,9 @@ return $buttons;
 add_filter("mce_buttons_3", "todos_los_botones");
 
 
-////////
-// Autenticacion con Email o Nombre de Usuario
-////////
+/*------------------------------------*\
+    AUTENTICACIÓN CON EMAIL
+\*------------------------------------*/
 function bainternet_allow_email_login( $user, $username, $password ) {
     if ( is_email( $username ) ) {
         $user = get_user_by_email( $username );
@@ -76,9 +97,9 @@ function addEmailToLogin( $translated_text, $text, $domain ) {
 add_filter( 'gettext', 'addEmailToLogin', 20, 3 );
 
 
-////////
-// Opciones del logo en el formulario de autenticacion
-////////
+/*------------------------------------*\
+    LOGO FORMULARIO AUTENTICACIÓN
+\*------------------------------------*/
 // Gargar css del formulario de autenticacion
 function bones_login_css() {
 	wp_enqueue_style( 'bones_login_css', get_template_directory_uri() . '/library/css/login.css', false);
@@ -95,9 +116,9 @@ add_filter( 'login_headerurl', 'bones_login_url' );
 add_filter( 'login_headertitle', 'bones_login_title' );
 
 
-////////
-// Eliminamos Elementos del menu si no es administrador
-////////
+/*------------------------------------*\
+    LIMITAR MENU SI NO ES ADMIN
+\*------------------------------------*/
 if (!current_user_can('manage_options')) {
     
 	add_action( 'admin_init', 'more_remove_menu_page' );
@@ -107,20 +128,19 @@ if (!current_user_can('manage_options')) {
 			//remove_menu_page( 'edit.php' );                   //Articulos
 			//remove_menu_page( 'upload.php' );                 //Audio visual
 			//remove_menu_page( 'edit.php?post_type=page' );    //Paginas
-			remove_menu_page( 'edit-comments.php' );          //Comentarios
-			remove_menu_page( 'themes.php' );                 //Apariencia
-			remove_menu_page( 'plugins.php' );                //Plugins
+			remove_menu_page( 'edit-comments.php' );            //Comentarios
+			remove_menu_page( 'themes.php' );                   //Apariencia
+			remove_menu_page( 'plugins.php' );                  //Plugins
 			//remove_menu_page( 'users.php' );                  //Usuarios
-			remove_menu_page( 'tools.php' );                  //Herramientas
-			remove_menu_page( 'options-general.php' );        //Ajustes
+			remove_menu_page( 'tools.php' );                    //Herramientas
+			remove_menu_page( 'options-general.php' );          //Ajustes
 	}    
 }
 
 
-
-////////
-// Eliminamos elementos del nuevo toolbar en WP 3.3
-////////
+/*------------------------------------*\
+    ELIMINAMOS ELEMENTOS DEL TOOLBAR DESDE WP 3.3
+\*------------------------------------*/
 function eliminar_nodos_admin_bar() {
     global $wp_admin_bar;
     $wp_admin_bar->remove_menu('wp-logo'); // Elimina el logo de WordPress (desaparece también todo el submenú)
@@ -138,9 +158,9 @@ function eliminar_nodos_admin_bar() {
 add_action('wp_before_admin_bar_render', 'eliminar_nodos_admin_bar');
 
 
-////////
-// Forzar el escritorio a una sola columna
-////////
+/*------------------------------------*\
+    FORZAR ESCRITORIO A UNA COLUMNA
+\*------------------------------------*/
 function so_screen_layout_columns( $columns ) {
     $columns['dashboard'] = 1;
     return $columns;
@@ -155,9 +175,9 @@ function so_screen_layout_dashboard() {
 add_filter( 'get_user_option_screen_layout_dashboard', 'so_screen_layout_dashboard' ); 
 
 
-////////
-// Eliminamos los Metabox del escritorio
-////////
+/*------------------------------------*\
+    ELIMINAMOS METABOX DEL ESCRITORIO
+\*------------------------------------*/
 function example_remove_dashboard_widgets() {
             remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
             remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );       
@@ -173,10 +193,9 @@ function example_remove_dashboard_widgets() {
 add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' ); 
 
   
-////////
-// Widget para el Escritorio
-////////
-
+/*------------------------------------*\
+    WIDGET PARA EL ESCRITORIO
+\*------------------------------------*/
 function custom_dashboard_widget() { ?>
             <img src="<?php bloginfo('template_directory'); ?>/images/logo.png" />     
             <h1>¡Hola! Este es tu área personal en la web XXXX</h1>
@@ -190,10 +209,9 @@ function my_dashboard_setup_function() {
 }
 
 
-
-////////
-// Remplazar nombre en el menu
-////////
+/*------------------------------------*\
+    REMPLAZAR NOMBRES DEL MENU
+\*------------------------------------*/
 add_filter( 'gettext', 'change_post_news' );
 add_filter( 'ngettext', 'change_post_news' );
  
@@ -213,9 +231,9 @@ function change_post_news( $translated )
 }
 
 
-////////
-// Ordenando el menu de administracion
-////////
+/*------------------------------------*\
+    ORDENAR EL MENU DE ADMINISTRACIÓN
+\*------------------------------------*/
 function custom_menu_order($menu_ord) {  
 if (!$menu_ord) return true;  
 
@@ -243,9 +261,9 @@ add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_or
 add_filter('menu_order', 'custom_menu_order');
 
 
-////////
-// Moviendo el menu
-////////
+/*------------------------------------*\
+    MOVIENDO EL MENU
+\*------------------------------------*/
 function re_sort_menu() {
   global $menu;
   global $submenu;
