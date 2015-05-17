@@ -284,7 +284,14 @@ function re_sort_menu() {
 }
 add_action( 'admin_menu', 're_sort_menu' );
 
+
 /*------------------------------------*\
-    ACTUALIZACIONES ACUTO DE PLUGINS
+    ACTUALIZACIONES AUTO DE PLUGINS
 \*------------------------------------*/
 add_filter( 'auto_update_plugin', '__return_true' );
+
+
+/*------------------------------------*\
+    REMOVER LA VERSION DE WORDPRESS
+\*------------------------------------*/
+remove_action('wp_head', 'wp_generator');

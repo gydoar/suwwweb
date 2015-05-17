@@ -1,0 +1,22 @@
+# SEGURIDAD PARA EL ARCHIVO .htaccess
+
+# proteger wp-config.php
+<files wp-config.php>
+Order deny,allow
+deny from all
+</files>
+
+# Proteger archivos de wp-admin
+<FilesMatch "*.*">
+Order Deny,Allow
+Deny from all
+Allow from 123.456.789
+</FilesMatch>
+
+# Proteger archivos sensibles por tipo de fichero
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log)$">
+Order Deny,Allow
+Deny from all
+Allow from 123.456.789.0
+</FilesMatch>
+
