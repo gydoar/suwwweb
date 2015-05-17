@@ -107,6 +107,5 @@ function optionsframework_options() {
 		'type' => 'text'
 	);
 
-	
 	return $options;
 }

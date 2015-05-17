@@ -26,6 +26,7 @@ Tags: wordpress, html5, css3, jquery, javascript, suwwweb
 \*------------------------------------*/
 @import url(library/css/normalize.css);
 @import url(library/css/skeleton.css);
+@import url(library/css/wp_css.css);
 
 
 
@@ -50,7 +51,10 @@ footer{}
 }
 
 
-
+img{
+	max-width: 100%;
+	height: auto;
+}
 
 
 /*------------------------------------*\

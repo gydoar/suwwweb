@@ -196,9 +196,8 @@ add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );
 /*------------------------------------*\
     WIDGET PARA EL ESCRITORIO
 \*------------------------------------*/
-function custom_dashboard_widget() { ?>
-            <img src="<?php bloginfo('template_directory'); ?>/images/logo.png" />     
-            <h1>¡Hola! Este es tu área personal en la web XXXX</h1>
+function custom_dashboard_widget() { ?>  
+            <h1>¡Hola! Este es tu área personal</h1>
             <p>Aquí va todo el texto que quieras, con todo el HTML que precises</p>
     <?php } 
     
@@ -284,3 +283,8 @@ function re_sort_menu() {
   $menu[33] = array( __( 'Editar Inicio', 'theme-slug' ), 'edit_themes', 'themes.php?page=options-framework', __( 'Theme Options', 'theme-slug' ), 'menu-top menu-nav', 'menu-nav', 'dashicons-admin-appearance');  
 }
 add_action( 'admin_menu', 're_sort_menu' );
+
+/*------------------------------------*\
+    ACTUALIZACIONES ACUTO DE PLUGINS
+\*------------------------------------*/
+add_filter( 'auto_update_plugin', '__return_true' );
