@@ -204,7 +204,7 @@ function custom_dashboard_widget() { ?>
 add_action( 'wp_dashboard_setup', 'my_dashboard_setup_function' );
 
 function my_dashboard_setup_function() {
-    add_meta_box( 'my_dashboard_widget', 'Biembenido al escritorio de suWWWeb', 'custom_dashboard_widget', 'dashboard', 'normal', 'high' );
+    add_meta_box( 'my_dashboard_widget', 'Bienvenido al escritorio de suWWWeb', 'custom_dashboard_widget', 'dashboard', 'normal', 'high' );
 }
 
 
@@ -295,3 +295,9 @@ add_filter( 'auto_update_plugin', '__return_true' );
     REMOVER LA VERSION DE WORDPRESS
 \*------------------------------------*/
 remove_action('wp_head', 'wp_generator');
+
+
+/*------------------------------------*\
+    DESACTIVAR MENSAJE DE ACTUALIZACION WP
+\*------------------------------------*/
+add_filter( 'auto_core_update_send_email', '__return_false' );
