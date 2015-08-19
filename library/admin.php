@@ -188,7 +188,8 @@ function example_remove_dashboard_widgets() {
             remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   
             remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' ); 
             remove_meta_box( 'dashboard_browser_nag', 'dashboard', 'normal' );     
-            remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );                  
+            remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+            remove_action('welcome_panel', 'wp_welcome_panel');                   
 }
 add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' ); 
 
