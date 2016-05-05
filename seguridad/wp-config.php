@@ -33,6 +33,9 @@ define('DB_CHARSET', 'utf8');
 /** Cotejamiento de la base de datos. No lo modifiques si tienes dudas. */
 define('DB_COLLATE', '');
 
+/** No peridr datos FTP en local **/
+define('FS_METHOD', 'direct');
+
 /**#@+
  * Claves únicas de autentificación.
  *
